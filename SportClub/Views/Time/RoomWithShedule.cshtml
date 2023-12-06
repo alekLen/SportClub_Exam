@@ -1,0 +1,46 @@
+﻿@model MakeSheduleView
+@{
+    ViewData["Title"] = "Timetables";
+}
+
+   
+        <h1>@Model.room.Name</h1>
+        <table style="border-collapse: collapse; border: 1px solid black;">
+            <thead>
+            <th style=" padding: 8px; border: 1px solid black;">Понедельник</th>
+            <th style=" padding: 8px; border: 1px solid black;">Вторник</th>
+            <th style=" padding: 8px; border: 1px solid black;">Среда</th>
+            <th style=" padding: 8px; border: 1px solid black;">Четверг</th>
+            <th style=" padding: 8px; border: 1px solid black;">Пятница</th>
+            <th style=" padding: 8px; border: 1px solid black;">Суббота</th>
+            <th style=" padding: 8px; border: 1px solid black;">Воскресенье</th>
+            </thead>
+            <tbody>              
+                <tr>
+                @for ( var t1 = 0; t1 < Model.times.Count; t1++)
+                    {
+                        <td>
+                        
+                        @for (var t = 0; t < Model.times[t1].Times.Count; t++)
+                            {
+                        <form>
+                            <input  name="dayS" value="@t1" />
+                            <input type="hidden" name="roomId" value="@Model.room.Id" />
+                            <input type="hidden" name="roomName" value="@Model.room.Name" />
+
+                            <input type="text" name="timeS" value="@Model.times[t1].Times[t]" style="width:100px;" readonly> <br />
+                            @if (@Model.times[t1].Times[t] != "Выходной")
+                            {
+                                <input type="submit" formaction="AddIndTraining" value="Добавить индивидуальную тренировку" /> <br />
+                                <input type="submit" formaction="AddGroupTraining" value="Добавить групповую тренировку" />  <br />
+                            }
+                        </form>
+                        }
+                        
+                        </td>
+                    }
+                </tr>
+
+            </tbody>
+        </table>
+       <h1>@Model.message</h1>

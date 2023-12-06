@@ -1,0 +1,22 @@
+﻿@model SportClub.BLL.DTO.TrainingIndDTO
+
+<h1>Добавить тренировку</h1>
+<form>
+    <div>
+        <input name="time" value="@Model.Time" />
+        <input type="hidden" name="day" value="@Model.Day" />
+        <input  name="dayName" value="@Model.DayName" readonly/>
+        <input name="time" value="@Model.Time" readonly/><br />
+        <input type="hidden" name="roomId" value="@Model.RoomId" />><br />
+
+        <input  name="roomName" value="@Model.RoomName" />
+        <label>Выбрать тренера</label><br />
+        <select asp-for="Id" class="form-control card _c7" asp-items="ViewBag.CoachId"></select>
+        <br />
+       
+        <input type="submit" formaction="AddTrainingI" value="Назначить тренировку" class="btn btn-primary c2 " /><br /><br />
+           
+       
+
+    </div>
+</form>
