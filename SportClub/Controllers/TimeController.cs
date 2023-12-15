@@ -352,12 +352,6 @@ namespace SportClub.Controllers
                     TimetableShow t1 = new();
                     t1.Id = t.Id;
 
-                    /* foreach (int i in t.TimesId)
-                     {
-                         TimeTDTO td = await timeService.GetTimeT(i);
-                         string st = td.StartTime + "/" + td.EndTime;
-                         t1.Times.Add(st);
-                     }*/
                     if (t.TimesId.Count == 0)
                     {
                         string s = "Выходной";
